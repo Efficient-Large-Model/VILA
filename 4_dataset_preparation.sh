@@ -10,6 +10,7 @@ FILTERED_JSON="$DATASET_ROOT_DIR/ground_truth.json"
 CONVERTED_JSON="$DATASET_DIR/converted.json"
 VIDEOS_DIR="$DATASET_DIR/videos"
 TRAIN_JSON="$DATASET_DIR/train.json"
+VAL_JSON="$DATASET_DIR/val.json"
 TEST_JSON="$DATASET_DIR/test.json"
 
 mkdir -p "$DATASET_DIR"
@@ -28,6 +29,7 @@ python "$QVED_DIR/convert_to_chat_template.py" "$FILTERED_JSON" "$CONVERTED_JSON
 python "$QVED_DIR/copy_data_to_videos_dir.py" "$DATASET_ROOT_DIR" "$VIDEOS_DIR"
 
 # 5. Split dataset
-python "$QVED_DIR/split_dataset.py" "$CONVERTED_JSON" "$TRAIN_JSON" "$TEST_JSON"
+python "$QVED_DIR/split_dataset.py" "$CONVERTED_JSON" "$TRAIN_JSON" "$VAL_JSON" "$TEST_JSON"
+
 
 echo "All dataset preparation steps completed."
