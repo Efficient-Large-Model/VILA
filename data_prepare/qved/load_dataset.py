@@ -19,7 +19,7 @@ from pathlib import Path
 from huggingface_hub import hf_hub_download, list_repo_files
 
 REPO_ID = "EdgeVLM-Labs/QVED-Test-Dataset"
-MAX_PER_CLASS = 100
+MAX_PER_CLASS = 1000
 FILE_EXT = ".mp4"
 GROUND_TRUTH_FILE = "fine_grained_labels.json"
 RANDOM_SEED = 42

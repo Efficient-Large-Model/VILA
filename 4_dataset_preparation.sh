@@ -22,14 +22,16 @@ python "$QVED_DIR/load_dataset.py" "$DATASET_ROOT_DIR"
 # 2. Filter ground truth
 python "$QVED_DIR/filter_ground_truth.py" "$DATASET_ROOT_DIR"
 
-# 3. Convert to chat template
+# 3. Clean dataset (NEW)
+python "$QVED_DIR/clean_videos.py" "$DATASET_ROOT_DIR"
+
+# 4. Convert to chat template
 python "$QVED_DIR/convert_to_chat_template.py" "$FILTERED_JSON" "$CONVERTED_JSON"
 
-# 4. Copy data to videos directory
+# 5. Copy data to videos directory
 python "$QVED_DIR/copy_data_to_videos_dir.py" "$DATASET_ROOT_DIR" "$VIDEOS_DIR"
 
-# 5. Split dataset
+# 6. Split dataset
 python "$QVED_DIR/split_dataset.py" "$CONVERTED_JSON" "$TRAIN_JSON" "$VAL_JSON" "$TEST_JSON"
-
 
 echo "All dataset preparation steps completed."
