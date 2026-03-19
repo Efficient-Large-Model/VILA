@@ -50,15 +50,15 @@ num_video_frames_thumbnail = 64  # Total sampled frames for thumbnails
 max_tiles_video = 48             # Max spatial tiles per video (one tile is 392x392)
 
 # ----- AutoGaze args (tiles) -----
-gazing_ratio_tile = [0.2] + [0.06] * 15  # Per-frame max gazing ratios (single float or list)
-task_loss_requirement_tile = 0.6
+gazing_ratio_tile = [0.2] + [0.06] * 15  # Per-frame max gazing ratios (single float or list). Videos with higher resolution/FPS usually need lower gazing ratio.
+task_loss_requirement_tile = 0.6         # AutoGaze stops gazing at each frame when the estimated reconstruction loss of that frame is lower than this threshold.
 
 # ----- AutoGaze args (thumbnails) -----
-gazing_ratio_thumbnail = 1       # Set to None to skip gazing on thumbnails
+gazing_ratio_thumbnail = 1       # Set gazing ratio to 1 and task loss requirement to None to skip gazing on thumbnails
 task_loss_requirement_thumbnail = None
 
 # ----- Batching -----
-max_batch_size_autogaze = 16
+max_batch_size_autogaze = 16     # Set AutoGaze and SigLIP to use smaller mini-batch size if GPU memory is limited
 max_batch_size_siglip = 32
 
 # Load processor and model
