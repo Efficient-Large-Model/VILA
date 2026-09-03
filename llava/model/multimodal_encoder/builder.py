@@ -72,5 +72,5 @@ def build_vision_tower(model_name_or_path: str, config: PretrainedConfig) -> Pre
     )
     if config.ps3:
         config.mm_low_res_token_num = vision_tower.vision_tower.vision_model.low_res_token_num
-        config.mm_scale_num = len(vision_tower.vision_tower.vision_model.s3_scales)
+        config.mm_scale_num = len(vision_tower.vision_tower.vision_model.ps3_scales)
     return vision_tower
