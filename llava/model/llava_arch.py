@@ -980,17 +980,17 @@ class LlavaTopDownMetaForCausalLM(LlavaMetaForCausalLM):
             assert len(images) == len(original_image_sizes)
             thresholds = [
                 (
-                    self.get_vision_tower().vision_tower.vision_model.s3_scales[i]
-                    + self.get_vision_tower().vision_tower.vision_model.s3_scales[i + 1]
+                    self.get_vision_tower().vision_tower.vision_model.ps3_scales[i]
+                    + self.get_vision_tower().vision_tower.vision_model.ps3_scales[i + 1]
                 )
                 / 2
-                for i in range(1, len(self.get_vision_tower().vision_tower.vision_model.s3_scales) - 1)
+                for i in range(1, len(self.get_vision_tower().vision_tower.vision_model.ps3_scales) - 1)
             ]
             only_select_first_n_scale = []
             for i, (img, original_size) in enumerate(zip(images, original_image_sizes)):
                 if (
                     max(original_size) > thresholds[-1]
-                    or self.get_vision_tower().vision_tower.vision_model.s3_scales[-1] <= 2000
+                    or self.get_vision_tower().vision_tower.vision_model.ps3_scales[-1] <= 2000
                 ):
                     only_select_first_n_scale.append(len(thresholds) + 1)
                 else:
